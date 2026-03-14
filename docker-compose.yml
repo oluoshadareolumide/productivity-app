@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    ports:
+      - "3001:3001"
+    volumes:
+      - app_data:/app/data
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - DB_PATH=/app/data/productivity.db
+    restart: unless-stopped
+
+volumes:
+  app_data:
